@@ -21,6 +21,16 @@ class TitleFragment : Fragment() {
             view: View -> view.findNavController().navigate(R.id.action_titleFragmentN_to_gameFragment)
         }
 
+        // rules button
+        binding.rulesButton.setOnClickListener{
+            view: View -> view.findNavController().navigate(R.id.action_titleFragmentN_to_rulesFragment)
+        }
+
+        // about button
+        binding.aboutButton.setOnClickListener{
+            view: View -> view.findNavController().navigate(R.id.action_titleFragmentN_to_aboutFragment)
+        }
+
         // set the options menu (the three dots)
         setHasOptionsMenu(true)
         return binding.root
