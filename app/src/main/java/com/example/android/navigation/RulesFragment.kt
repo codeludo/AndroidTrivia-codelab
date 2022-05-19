@@ -22,6 +22,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
+import androidx.navigation.findNavController
 import com.example.android.navigation.databinding.FragmentRulesBinding
 
 class RulesFragment : Fragment() {
@@ -30,6 +31,12 @@ class RulesFragment : Fragment() {
         // Inflate the layout for this fragment
         val binding = DataBindingUtil.inflate<FragmentRulesBinding>(inflater, R.layout.fragment_rules,
         container, false)
+
+        // play button functionality
+        binding.PlayButtonInRules.setOnClickListener { view: View ->
+            view.findNavController().navigate(R.id.action_rulesFragment_to_gameFragment)
+        }
+
         return binding.root
     }
 }
