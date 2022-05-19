@@ -20,6 +20,7 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.drawerlayout.widget.DrawerLayout
+import androidx.navigation.Navigation
 import androidx.navigation.findNavController
 import androidx.navigation.ui.NavigationUI
 import com.example.android.navigation.databinding.ActivityMainBinding
@@ -39,8 +40,12 @@ class MainActivity : AppCompatActivity() {
         // find the navigation controller object
         val navController = this.findNavController(R.id.myNavHostFragment)
 
-        // link the navigation controller to the app bar
+        // link the navigation controller to the app bar, add the drawer layout
         NavigationUI.setupActionBarWithNavController(this, navController, drawerLayout)
+
+        // allows the user to display the navigation drawer.
+        // Do this by calling setupWithNavController()
+        NavigationUI.setupWithNavController(binding.navView, navController)
 
     }
 
@@ -49,6 +54,6 @@ class MainActivity : AppCompatActivity() {
     override fun onSupportNavigateUp(): Boolean {
 
         val navController = this.findNavController(R.id.myNavHostFragment)
-        return navController.navigateUp()
+        return NavigationUI.navigateUp(navController, drawerLayout)
     }
 }
